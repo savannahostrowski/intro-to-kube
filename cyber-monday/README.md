@@ -96,5 +96,5 @@ git push -u origin cyber-<github-username>
 5. Last but not least, let's write a `kubectl cp` command to copy the `/tmp/foo.log` file from inside the Pod onto our machine's current working directory. You can verify it works when the file `foo.log` appears in your current working directory. Write this command inside the `backup.txt` file.
 
 ## Challenge
-0. We have added the automated scripting to our Pod created by `nginx-pod.yml`. However, we have not added that same logic to the Pods encapsulated by our Deployment. For this challenge, repeat the same steps for all pods in the deployment, but ensure that when copying the log files to our local machine, they are prefixed by the Pod's unique identifier.
+0. We have added the automated scripting to our Pod created by `nginx-pod.yml`. However, we have not added that same logic to the Pods encapsulated by our Deployment. For this challenge, repeat the same steps for all pods in the deployment, but ensure that when copying the log files to our local machine, they are prefixed by the Pod's unique identifier. 
 
