@@ -3,7 +3,7 @@
 # TODO: Enter kubectl cp command used to get `log.sh` file into the Pod
 kubectl cp log.sh nginx-pod:/
 # TODO: Enter kubectl exec command used to execute the `log.sh`
-kubectl exec -it nginx-pod -- chmod +x /log.sh && /log.sh
+kubectl exec -it nginx-pod -- ./log.sh
 # TODO: Enter kubectl cp command used to copy the log file from inside the
 # Pod to your current working directory
-kubectl cp nginx-pod:/tmp/foo.log ./foo.log
+kubectl cp nginx-pod:tmp/foo.log ./foo.log
