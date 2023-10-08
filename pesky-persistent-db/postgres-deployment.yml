@@ -13,39 +13,19 @@ spec:
         app: postgres
     spec:
       containers:
-        - name: postgres
-          image: postgres:10.1
-          imagePullPolicy: "IfNotPresent"
-          ports:
-            - containerPort: 5432 # Exposes container port
-          env:
-            - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_DB
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_USER
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
-          # TODO:
-          # a. Add a config map reference to your secrets
-          # b. Add the following volumeMounts:
-          #        mountPath: /var/lib/postgresql/data
-          #        name to be postgredb
-          # c. Add the persistent volume claim from postgres-persistent.yml
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+      - name: postgres
+        image: postgres:10.1
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - containerPort: 5432 # Exposes container port
+        envFrom:
+        - secretRef:
+            name: postgres-secret
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgredb
       volumes:
-        - name: postgredb
-          persistentVolumeClaim:
-            claimName: postgres-pv-claim
-
+      - name: postgredb
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
             
